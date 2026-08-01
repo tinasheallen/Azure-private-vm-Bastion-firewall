@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Secure Azure Web VM</title>
+  <style>
+    body { margin:0; min-height:100vh; display:grid; place-items:center;
+           font-family: system-ui, sans-serif; background:#0b2545; color:#f4f6fb; }
+    .card { text-align:center; padding:3rem; border:1px solid #1d4e89; border-radius:14px; }
+    h1 { margin:0 0 .5rem; font-size:1.9rem; }
+    code { background:#123; padding:.15rem .45rem; border-radius:5px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>It works.</h1>
+    <p>Served by NGINX on a private Azure VM.</p>
+    <p>No public IP. Reached through Azure Firewall DNAT on port <code>4000</code>.</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 560" width="940" height="560" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#495057"/>
+    </marker>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0078d4"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c62828"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="940" height="560" fill="#ffffff"/>
+
+  <!-- Resource Group -->
+  <rect x="180" y="30" width="730" height="500" rx="12" fill="#f8f9fb" stroke="#8a8886" stroke-width="1.5" stroke-dasharray="8 5"/>
+  <text x="198" y="54" font-size="14" fill="#605e5c" font-weight="600">Resource Group — rg-secure-web</text>
+
+  <!-- VNet -->
+  <rect x="204" y="70" width="682" height="440" rx="10" fill="#eef6fd" stroke="#0078d4" stroke-width="2"/>
+  <text x="222" y="94" font-size="15" fill="#0078d4" font-weight="700">VNet — vnet-secure-web · 10.0.0.0/16</text>
+
+  <!-- Firewall subnet -->
+  <rect x="230" y="120" width="230" height="150" rx="8" fill="#ffffff" stroke="#8764b8" stroke-width="1.6"/>
+  <text x="244" y="142" font-size="12.5" fill="#8764b8" font-weight="700">AzureFirewallSubnet</text>
+  <text x="244" y="159" font-size="11.5" fill="#605e5c">10.0.1.0/26</text>
+  <rect x="252" y="172" width="186" height="80" rx="6" fill="#f3effa" stroke="#8764b8"/>
+  <text x="345" y="198" font-size="14" fill="#3b2e58" font-weight="700" text-anchor="middle">Azure Firewall</text>
+  <text x="345" y="217" font-size="11.5" fill="#605e5c" text-anchor="middle">Public IP :4000</text>
+  <text x="345" y="235" font-size="11.5" fill="#605e5c" text-anchor="middle">DNAT → 10.0.3.4:80</text>
+
+  <!-- Bastion subnet -->
+  <rect x="230" y="300" width="230" height="150" rx="8" fill="#ffffff" stroke="#0f7b6c" stroke-width="1.6"/>
+  <text x="244" y="322" font-size="12.5" fill="#0f7b6c" font-weight="700">AzureBastionSubnet</text>
+  <text x="244" y="339" font-size="11.5" fill="#605e5c">10.0.2.0/26</text>
+  <rect x="252" y="352" width="186" height="80" rx="6" fill="#e9f5f2" stroke="#0f7b6c"/>
+  <text x="345" y="378" font-size="14" fill="#0b4f45" font-weight="700" text-anchor="middle">Azure Bastion</text>
+  <text x="345" y="397" font-size="11.5" fill="#605e5c" text-anchor="middle">Jump server (TLS 443)</text>
+  <text x="345" y="415" font-size="11.5" fill="#605e5c" text-anchor="middle">SSH → 10.0.3.4:22</text>
+
+  <!-- Web subnet -->
+  <rect x="560" y="150" width="300" height="270" rx="8" fill="#ffffff" stroke="#d83b01" stroke-width="1.6"/>
+  <text x="576" y="174" font-size="12.5" fill="#d83b01" font-weight="700">WebSubnet</text>
+  <text x="576" y="191" font-size="11.5" fill="#605e5c">10.0.3.0/24</text>
+
+  <rect x="596" y="208" width="228" height="180" rx="8" fill="#fff4ef" stroke="#d83b01"/>
+  <text x="710" y="238" font-size="15" fill="#7a2200" font-weight="700" text-anchor="middle">vm-web-01</text>
+  <text x="710" y="259" font-size="12" fill="#605e5c" text-anchor="middle">Ubuntu 22.04 LTS</text>
+  <text x="710" y="279" font-size="12" fill="#605e5c" text-anchor="middle">NGINX · static index.html</text>
+  <line x1="620" y1="294" x2="800" y2="294" stroke="#e0c3b4"/>
+  <text x="710" y="316" font-size="12.5" fill="#333" text-anchor="middle" font-weight="600">Private IP: 10.0.3.4</text>
+  <text x="710" y="336" font-size="12.5" fill="#c62828" text-anchor="middle" font-weight="700">NO Public IP</text>
+  <text x="710" y="358" font-size="11.5" fill="#605e5c" text-anchor="middle">NSG: allow :80 from Firewall</text>
+  <text x="710" y="375" font-size="11.5" fill="#605e5c" text-anchor="middle">allow :22 from Bastion only</text>
+
+  <!-- External actors -->
+  <circle cx="80" cy="196" r="34" fill="#ffffff" stroke="#0078d4" stroke-width="2"/>
+  <text x="80" y="193" font-size="12" fill="#0078d4" text-anchor="middle" font-weight="700">Web</text>
+  <text x="80" y="208" font-size="12" fill="#0078d4" text-anchor="middle" font-weight="700">user</text>
+
+  <circle cx="80" cy="376" r="34" fill="#ffffff" stroke="#0f7b6c" stroke-width="2"/>
+  <text x="80" y="373" font-size="12" fill="#0f7b6c" text-anchor="middle" font-weight="700">Admin</text>
+  <text x="80" y="388" font-size="12" fill="#0f7b6c" text-anchor="middle" font-weight="700">(Entra ID)</text>
+
+  <circle cx="80" cy="500" r="30" fill="#ffffff" stroke="#c62828" stroke-width="2"/>
+  <text x="80" y="497" font-size="11" fill="#c62828" text-anchor="middle" font-weight="700">Anyone</text>
+  <text x="80" y="511" font-size="11" fill="#c62828" text-anchor="middle" font-weight="700">else</text>
+
+  <!-- Flows -->
+  <path d="M 116 196 L 248 196" stroke="#0078d4" stroke-width="2.2" fill="none" marker-end="url(#arrowBlue)"/>
+  <text x="182" y="186" font-size="11" fill="#0078d4" text-anchor="middle" font-weight="600">HTTP :4000</text>
+
+  <path d="M 440 212 C 500 212, 520 250, 592 262" stroke="#0078d4" stroke-width="2.2" fill="none" marker-end="url(#arrowBlue)"/>
+  <text x="516" y="236" font-size="11" fill="#0078d4" text-anchor="middle" font-weight="600">DNAT :80</text>
+
+  <path d="M 116 376 L 248 376" stroke="#0f7b6c" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+  <text x="182" y="366" font-size="11" fill="#0f7b6c" text-anchor="middle" font-weight="600">HTTPS 443</text>
+
+  <path d="M 440 392 C 520 392, 540 350, 592 336" stroke="#0f7b6c" stroke-width="2.2" fill="none" marker-end="url(#arrow)"/>
+  <text x="520" y="392" font-size="11" fill="#0f7b6c" text-anchor="middle" font-weight="600">SSH :22</text>
+
+  <path d="M 112 490 L 200 452" stroke="#c62828" stroke-width="2.2" fill="none" stroke-dasharray="7 5" marker-end="url(#arrowRed)"/>
+  <line x1="150" y1="456" x2="176" y2="482" stroke="#c62828" stroke-width="3"/>
+  <line x1="176" y1="456" x2="150" y2="482" stroke="#c62828" stroke-width="3"/>
+  <text x="250" y="492" font-size="11.5" fill="#c62828" font-weight="700">Direct access blocked — no public IP on the VM</text>
+</svg>

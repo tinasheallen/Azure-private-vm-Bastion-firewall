@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 240" width="940" height="240" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#0078d4"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="940" height="240" fill="#ffffff"/>
+  <text x="24" y="38" font-size="16" font-weight="700" fill="#243447">Build order</text>
+
+  <g font-size="12.5" fill="#243447">
+    <rect x="24" y="66" width="130" height="86" rx="8" fill="#eef6fd" stroke="#0078d4" stroke-width="1.6"/>
+    <text x="89" y="96" text-anchor="middle" font-weight="700" font-size="13">1. Resource</text>
+    <text x="89" y="114" text-anchor="middle" font-weight="700" font-size="13">Group</text>
+    <text x="89" y="134" text-anchor="middle" fill="#605e5c" font-size="11">pick a region</text>
+
+    <rect x="186" y="66" width="130" height="86" rx="8" fill="#eef6fd" stroke="#0078d4" stroke-width="1.6"/>
+    <text x="251" y="96" text-anchor="middle" font-weight="700" font-size="13">2. VNet +</text>
+    <text x="251" y="114" text-anchor="middle" font-weight="700" font-size="13">3 subnets</text>
+    <text x="251" y="134" text-anchor="middle" fill="#605e5c" font-size="11">exact subnet names</text>
+
+    <rect x="348" y="66" width="130" height="86" rx="8" fill="#f3effa" stroke="#8764b8" stroke-width="1.6"/>
+    <text x="413" y="96" text-anchor="middle" font-weight="700" font-size="13">3. Bastion +</text>
+    <text x="413" y="114" text-anchor="middle" font-weight="700" font-size="13">Firewall</text>
+    <text x="413" y="134" text-anchor="middle" fill="#605e5c" font-size="11">each gets a Public IP</text>
+
+    <rect x="510" y="66" width="130" height="86" rx="8" fill="#fff4ef" stroke="#d83b01" stroke-width="1.6"/>
+    <text x="575" y="96" text-anchor="middle" font-weight="700" font-size="13">4. Ubuntu VM</text>
+    <text x="575" y="114" text-anchor="middle" font-weight="700" font-size="13">in WebSubnet</text>
+    <text x="575" y="134" text-anchor="middle" fill="#c62828" font-size="11">Public IP = None</text>
+
+    <rect x="672" y="66" width="130" height="86" rx="8" fill="#e9f5f2" stroke="#0f7b6c" stroke-width="1.6"/>
+    <text x="737" y="96" text-anchor="middle" font-weight="700" font-size="13">5. NGINX via</text>
+    <text x="737" y="114" text-anchor="middle" font-weight="700" font-size="13">Bastion SSH</text>
+    <text x="737" y="134" text-anchor="middle" fill="#605e5c" font-size="11">or cloud-init</text>
+
+    <rect x="834" y="66" width="82" height="86" rx="8" fill="#f3effa" stroke="#8764b8" stroke-width="1.6"/>
+    <text x="875" y="96" text-anchor="middle" font-weight="700" font-size="13">6. DNAT</text>
+    <text x="875" y="114" text-anchor="middle" font-weight="700" font-size="13">rule</text>
+    <text x="875" y="134" text-anchor="middle" fill="#605e5c" font-size="11">4000 → 80</text>
+  </g>
+
+  <g stroke="#0078d4" stroke-width="2" marker-end="url(#a)">
+    <line x1="158" y1="109" x2="180" y2="109"/>
+    <line x1="320" y1="109" x2="342" y2="109"/>
+    <line x1="482" y1="109" x2="504" y2="109"/>
+    <line x1="644" y1="109" x2="666" y2="109"/>
+    <line x1="806" y1="109" x2="828" y2="109"/>
+  </g>
+
+  <text x="24" y="196" font-size="12.5" fill="#605e5c">Verify: browse to http://&lt;firewall-public-ip&gt;:4000 — the NGINX page loads through the firewall, never directly from the VM.</text>
+  <text x="24" y="218" font-size="12.5" fill="#c62828" font-weight="600">Cleanup: delete the Resource Group. Firewall and Bastion bill hourly whether you use them or not.</text>
+</svg>
